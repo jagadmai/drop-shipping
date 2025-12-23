@@ -1,36 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NovaStore</title>
-<link rel="stylesheet" href="css/style.css">
-<script defer src="js/auth.js"></script>
-<script defer src="js/app.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NovaStore</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/auth.js"></script> <!-- load auth first -->
+  <script defer src="js/app.js"></script>  <!-- then app.js -->
 </head>
 <body>
 
+<!-- Header with Login/Signup and Cart -->
 <header>
   <a href="#">NovaStore</a>
   <div id="userSection">
-    <a href="login.html">Login</a> | <a href="signup.html">Sign Up</a>
+    <a href="login.html">Login</a> | <a href="signup.html">Sign Up</a> | <a href="cart.html">🛒 Cart</a>
   </div>
 </header>
 
+<!-- Banner -->
 <div class="banner">⚠️ Demo Store — No real payments</div>
 
+<!-- Hero Section -->
 <section class="hero">
   <h1>Upgrade Your Life</h1>
   <p>Trending tech. Clean design.</p>
   <button onclick="document.querySelector('.products').scrollIntoView({behavior:'smooth'})">Shop Now</button>
 </section>
 
+<!-- Search bar -->
 <section class="search-bar">
   <input type="text" id="searchInput" placeholder="Search products..." onkeyup="filterProducts()">
 </section>
 
+<!-- Product container -->
 <section class="products" id="productsContainer"></section>
 
+<!-- Reviews Section -->
 <section class="reviews">
   <h2>Customer Reviews</h2>
   <div class="review">⭐⭐⭐⭐⭐ “Looks premium. Feels premium.”</div>
@@ -38,8 +44,10 @@
   <div class="review">⭐⭐⭐⭐⭐ “Love this demo store!”</div>
 </section>
 
+<!-- Footer -->
 <footer>© 2025 NovaStore</footer>
 
+<!-- Live Orders Popup -->
 <div id="liveOrder"></div>
 
 </body>

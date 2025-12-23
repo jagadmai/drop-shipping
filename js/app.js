@@ -1,21 +1,54 @@
+// ===== Account cart system =====
 let cart = loadCartForUser();
 
-const products = [
-  { name: "Smart LED Lights", price: 29.99, img: "https://images.unsplash.com/photo-1593129836677-30229c3a1c16?auto=format&fit=crop&w=400&q=80" },
-  { name: "Wireless Charger", price: 24.99, img: "https://images.unsplash.com/photo-1612831455542-81e5f26c9f7c?auto=format&fit=crop&w=400&q=80" },
-  { name: "Desk Lamp", price: 19.99, img: "https://images.unsplash.com/photo-1602524205351-5f11be17b579?auto=format&fit=crop&w=400&q=80" },
-  { name: "Bluetooth Speaker", price: 49.99, img: "https://images.unsplash.com/photo-1580910051077-2b5f5b17c6b7?auto=format&fit=crop&w=400&q=80" },
-  { name: "Smart Watch", price: 79.99, img: "https://images.unsplash.com/photo-1599942263130-b2c77dfc045b?auto=format&fit=crop&w=400&q=80" },
-  { name: "Portable Fan", price: 14.99, img: "https://images.unsplash.com/photo-1581091870620-9f4a57d43287?auto=format&fit=crop&w=400&q=80" },
-  { name: "Wireless Earbuds", price: 59.99, img: "https://images.unsplash.com/photo-1606813905262-8c40ef1f585e?auto=format&fit=crop&w=400&q=80" },
-  { name: "Gaming Mouse", price: 34.99, img: "https://images.unsplash.com/photo-1610428712993-60160f0b40c7?auto=format&fit=crop&w=400&q=80" }
-];
+// ===== Generate 1000 products =====
+const products = [];
+for(let i=1; i<=1000; i++){
+  products.push({
+    name: `Product ${i}`,
+    price: (Math.random()*100+5).toFixed(2),
+    img: `https://picsum.photos/seed/${i}/200/200`
+  });
+}
 
-function renderProducts(list) {
-  const container = document.getElementById("productsContainer");
-  container.innerHTML = "";
-  list.forEach(p => {
-    container.innerHTML += `
+// ===== Lazy render products =====
+let productsContainer = document.getElementById("productsContainer");
+let productsPerLoad = 50; // load 50 at a time
+let loadedCount = 0;
+
+function renderProductsLazy() {
+  if (!productsContainer) return;
+  const slice = products.slice(loadedCount, loadedCount + productsPerLoad);
+  slice.forEach(p => {
+    productsContainer.innerHTML += `
+      <div class="card">
+        <img src="${p.img}">
+        <h3>${p.name}</h3>
+        <div class="price">$${p.price}</div>
+        <button class="buy" onclick="addToCart('${p.name}',${p.price})">Add to Cart</button>
+      </div>
+    `;
+  });
+  loadedCount += productsPerLoad;
+}
+
+// Initial render
+renderProductsLazy();
+
+// Load more on scroll
+window.addEventListener('scroll', () => {
+  if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 500) {
+    renderProductsLazy();
+  }
+});
+
+// ===== Search =====
+function filterProducts() {
+  const input = document.getElementById("searchInput").value.toLowerCase();
+  const filtered = products.filter(p => p.name.toLowerCase().includes(input));
+  productsContainer.innerHTML = ""; // clear
+  filtered.slice(0, loadedCount).forEach(p => {
+    productsContainer.innerHTML += `
       <div class="card">
         <img src="${p.img}">
         <h3>${p.name}</h3>
@@ -26,13 +59,7 @@ function renderProducts(list) {
   });
 }
 
-renderProducts(products);
-
-function filterProducts() {
-  const input = document.getElementById("searchInput").value.toLowerCase();
-  renderProducts(products.filter(p => p.name.toLowerCase().includes(input)));
-}
-
+// ===== Cart Functions =====
 function addToCart(name, price) {
   cart.push({ name, price });
   saveCart(cart);
@@ -49,7 +76,7 @@ function loadCart() {
   }
   cart.forEach(item => {
     list.innerHTML += `<p>${item.name} — $${item.price}</p>`;
-    total += item.price;
+    total += parseFloat(item.price);
   });
   document.getElementById("total").innerText = "Total: $" + total.toFixed(2);
 }
@@ -63,9 +90,9 @@ function placeOrder() {
   window.location.href = "success.html";
 }
 
+// ===== Live Orders =====
 const names = ["John","Alice","Emma","Liam","Noah","Olivia"];
 const cities = ["NY","LA","Miami","Chicago","Dallas","Seattle"];
-
 function showLiveOrder() {
   let name = names[Math.floor(Math.random()*names.length)];
   let city = cities[Math.floor(Math.random()*cities.length)];
@@ -75,14 +102,17 @@ function showLiveOrder() {
   live.classList.add("show");
   setTimeout(()=>live.classList.remove("show"),4000);
 }
-
 setInterval(showLiveOrder, Math.floor(Math.random()*6000)+6000);
 
+// ===== Header update =====
 function updateHeader() {
   const user = getCurrentUser();
   const userSection = document.getElementById("userSection");
   if (!userSection) return;
-  if (user) userSection.innerHTML = `Welcome, ${user} | <a href="#" onclick="logout()">Logout</a>`;
-  else userSection.innerHTML = `<a href="login.html">Login</a> | <a href="signup.html">Sign Up</a>`;
+  if (user) userSection.innerHTML = `Welcome, ${user} | <a href="#" onclick="logout()">Logout</a> | <a href="cart.html">🛒 Cart</a>`;
+  else userSection.innerHTML = `<a href="login.html">Login</a> | <a href="signup.html">Sign Up</a> | <a href="cart.html">🛒 Cart</a>`;
 }
 updateHeader();
+
+// ===== Load cart if on cart page =====
+if (document.getElementById("list")) loadCart();
