@@ -1,3 +1,4 @@
+// CART SYSTEM
 let cart = JSON.parse(localStorage.getItem("cart") || "[]");
 
 function addToCart(name, price) {
@@ -31,3 +32,31 @@ function placeOrder() {
   localStorage.removeItem("cart");
   window.location.href = "success.html";
 }
+
+// FAKE LIVE ORDERS
+const names = ["John", "Alice", "Emma", "Liam", "Noah", "Olivia"];
+const cities = ["NY", "LA", "Miami", "Chicago", "Dallas", "Seattle"];
+const products = [
+  "Smart LED Lights",
+  "Wireless Charger",
+  "Desk Lamp",
+  "Bluetooth Speaker",
+  "Smart Watch",
+  "Portable Fan"
+];
+
+function showLiveOrder() {
+  let name = names[Math.floor(Math.random() * names.length)];
+  let city = cities[Math.floor(Math.random() * cities.length)];
+  let product = products[Math.floor(Math.random() * products.length)];
+
+  let live = document.getElementById("liveOrder");
+  live.innerText = `${name} from ${city} just bought ${product}!`;
+  live.classList.add("show");
+
+  setTimeout(() => {
+    live.classList.remove("show");
+  }, 4000);
+}
+
+setInterval(showLiveOrder, Math.floor(Math.random() * 6000) + 6000);
