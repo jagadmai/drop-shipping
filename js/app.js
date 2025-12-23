@@ -2,14 +2,134 @@
 let cart = loadCartForUser();
 
 // ===== Generate 1000 products =====
-const products = [];
-for(let i=1; i<=1000; i++){
-  products.push({
-    name: `Product ${i}`,
-    price: (Math.random()*100+5).toFixed(2),
-    img: `https://picsum.photos/seed/${i}/200/200`
-  });
-}
+const products = [
+  {
+    name: "Apple iPhone 14 Pro",
+    price: 999.99,
+    img: "https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg"
+  },
+  {
+    name: "Samsung Galaxy S23 Ultra",
+    price: 1199.99,
+    img: "https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg"
+  },
+  {
+    name: "MacBook Pro 16\"",
+    price: 2499.99,
+    img: "https://images.pexels.com/photos/461077/pexels-photo-461077.jpeg"
+  },
+  {
+    name: "Dell XPS 13",
+    price: 1399.99,
+    img: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg"
+  },
+  {
+    name: "Sony WH‑1000XM5 Headphones",
+    price: 349.99,
+    img: "https://images.pexels.com/photos/3394653/pexels-photo-3394653.jpeg"
+  },
+  {
+    name: "Bose QuietComfort Earbuds",
+    price: 279.99,
+    img: "https://images.pexels.com/photos/3770255/pexels-photo-3770255.jpeg"
+  },
+  {
+    name: "Apple Watch Series 9",
+    price: 399.99,
+    img: "https://images.pexels.com/photos/277406/pexels-photo-277406.jpeg"
+  },
+  {
+    name: "Samsung Galaxy Watch 6",
+    price: 349.99,
+    img: "https://images.pexels.com/photos/277406/pexels-photo-277406.jpeg"
+  },
+  {
+    name: "Google Pixel 7",
+    price: 599.99,
+    img: "https://images.pexels.com/photos/5077041/pexels-photo-5077041.jpeg"
+  },
+  {
+    name: "OnePlus 11",
+    price: 699.99,
+    img: "https://images.pexels.com/photos/5077041/pexels-photo-5077041.jpeg"
+  },
+  {
+    name: "iPad Pro 12.9\"",
+    price: 1099.99,
+    img: "https://images.pexels.com/photos/5082576/pexels-photo-5082576.jpeg"
+  },
+  {
+    name: "Amazon Fire HD 10",
+    price: 149.99,
+    img: "https://images.pexels.com/photos/5082576/pexels-photo-5082576.jpeg"
+  },
+  {
+    name: "Sony PlayStation 5",
+    price: 499.99,
+    img: "https://images.pexels.com/photos/845745/pexels-photo-845745.jpeg"
+  },
+  {
+    name: "Microsoft Xbox Series X",
+    price: 499.99,
+    img: "https://images.pexels.com/photos/845745/pexels-photo-845745.jpeg"
+  },
+  {
+    name: "Nintendo Switch",
+    price: 299.99,
+    img: "https://images.pexels.com/photos/4109129/pexels-photo-4109129.jpeg"
+  },
+  {
+    name: "GoPro HERO11",
+    price: 399.99,
+    img: "https://images.pexels.com/photos/276467/pexels-photo-276467.jpeg"
+  },
+  {
+    name: "DJI Mini 3 Pro",
+    price: 759.99,
+    img: "https://images.pexels.com/photos/1459428/pexels-photo-1459428.jpeg"
+  },
+  {
+    name: "Fitbit Versa 4",
+    price: 229.99,
+    img: "https://images.pexels.com/photos/277406/pexels-photo-277406.jpeg"
+  },
+  {
+    name: "JBL Charge 5 Speaker",
+    price: 179.99,
+    img: "https://images.pexels.com/photos/63703/pexels-photo-63703.jpeg"
+  },
+  {
+    name: "Anker Portable Charger",
+    price: 59.99,
+    img: "https://images.pexels.com/photos/4498369/pexels-photo-4498369.jpeg"
+  },
+  {
+    name: "Logitech MX Master 3",
+    price: 99.99,
+    img: "https://images.pexels.com/photos/3945681/pexels-photo-3945681.jpeg"
+  },
+  {
+    name: "Razer BlackWidow Keyboard",
+    price: 129.99,
+    img: "https://images.pexels.com/photos/3945681/pexels-photo-3945681.jpeg"
+  },
+  {
+    name: "Apple AirPods Pro 2",
+    price: 249.99,
+    img: "https://images.pexels.com/photos/3394653/pexels-photo-3394653.jpeg"
+  },
+  {
+    name: "Samsung Galaxy Buds 2 Pro",
+    price: 229.99,
+    img: "https://images.pexels.com/photos/3770255/pexels-photo-3770255.jpeg"
+  },
+  {
+    name: "HP Envy Laptop",
+    price: 999.99,
+    img: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg"
+  }
+];
+
 
 // ===== Lazy render products =====
 let productsContainer = document.getElementById("productsContainer");
