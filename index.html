@@ -25,43 +25,13 @@
   </button>
 </section>
 
-<section class="products">
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1518441902117-fbfb4b7e34ae">
-    <h3>Smart LED Lights</h3>
-    <div class="price">$29.99</div>
-    <button class="buy" onclick="addToCart('Smart LED Lights',29.99)">Add to Cart</button>
-  </div>
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1585386959984-a41552231693">
-    <h3>Wireless Charger</h3>
-    <div class="price">$24.99</div>
-    <button class="buy" onclick="addToCart('Wireless Charger',24.99)">Add to Cart</button>
-  </div>
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90">
-    <h3>Desk Lamp</h3>
-    <div class="price">$19.99</div>
-    <button class="buy" onclick="addToCart('Desk Lamp',19.99)">Add to Cart</button>
-  </div>
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1602524205351-5f11be17b579">
-    <h3>Bluetooth Speaker</h3>
-    <div class="price">$49.99</div>
-    <button class="buy" onclick="addToCart('Bluetooth Speaker',49.99)">Add to Cart</button>
-  </div>
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1616628183950-11b1230b3c44">
-    <h3>Smart Watch</h3>
-    <div class="price">$79.99</div>
-    <button class="buy" onclick="addToCart('Smart Watch',79.99)">Add to Cart</button>
-  </div>
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1581091870620-9f4a57d43287">
-    <h3>Portable Fan</h3>
-    <div class="price">$14.99</div>
-    <button class="buy" onclick="addToCart('Portable Fan',14.99)">Add to Cart</button>
-  </div>
+<section class="search-bar" style="text-align:center; margin: 40px 0;">
+  <input type="text" id="searchInput" placeholder="Search products..." 
+    onkeyup="filterProducts()" style="padding:10px; width:300px; border-radius:12px; border:1px solid #ccc;">
+</section>
+
+<section class="products" id="productsContainer">
+  <!-- Product Cards will be injected via JS -->
 </section>
 
 <section class="reviews">
