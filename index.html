@@ -1,18 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>NovaStore</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaStore</title>
 <link rel="stylesheet" href="css/style.css">
+<script defer src="js/auth.js"></script>
 <script defer src="js/app.js"></script>
 </head>
-
 <body>
 
 <header>
   <a href="#">NovaStore</a>
-  <a href="cart.html">Cart 🛒</a>
+  <div id="userSection">
+    <a href="login.html">Login</a> | <a href="signup.html">Sign Up</a>
+  </div>
 </header>
 
 <div class="banner">⚠️ Demo Store — No real payments</div>
@@ -20,29 +22,23 @@
 <section class="hero">
   <h1>Upgrade Your Life</h1>
   <p>Trending tech. Clean design.</p>
-  <button onclick="document.querySelector('.products').scrollIntoView({behavior:'smooth'})">
-    Shop Now
-  </button>
+  <button onclick="document.querySelector('.products').scrollIntoView({behavior:'smooth'})">Shop Now</button>
 </section>
 
-<section class="search-bar" style="text-align:center; margin: 40px 0;">
-  <input type="text" id="searchInput" placeholder="Search products..." 
-    onkeyup="filterProducts()" style="padding:10px; width:300px; border-radius:12px; border:1px solid #ccc;">
+<section class="search-bar">
+  <input type="text" id="searchInput" placeholder="Search products..." onkeyup="filterProducts()">
 </section>
 
-<section class="products" id="productsContainer">
-  <!-- Product Cards will be injected via JS -->
-</section>
+<section class="products" id="productsContainer"></section>
 
 <section class="reviews">
   <h2>Customer Reviews</h2>
   <div class="review">⭐⭐⭐⭐⭐ “Looks premium. Feels premium.”</div>
   <div class="review">⭐⭐⭐⭐ “Shipping was fast.”</div>
+  <div class="review">⭐⭐⭐⭐⭐ “Love this demo store!”</div>
 </section>
 
-<footer>
-  © 2025 NovaStore
-</footer>
+<footer>© 2025 NovaStore</footer>
 
 <div id="liveOrder"></div>
 

@@ -1,18 +1,9 @@
-// Demo account system with LocalStorage
-
 function signup() {
   const user = document.getElementById("username").value;
   const pass = document.getElementById("password").value;
-
   if (!user || !pass) return alert("Enter both fields.");
-
   let users = JSON.parse(localStorage.getItem("users") || "{}");
-
-  if (users[user]) {
-    alert("Username already exists!");
-    return;
-  }
-
+  if (users[user]) return alert("Username exists!");
   users[user] = { password: pass, cart: [] };
   localStorage.setItem("users", JSON.stringify(users));
   localStorage.setItem("currentUser", user);
@@ -23,16 +14,8 @@ function signup() {
 function login() {
   const user = document.getElementById("username").value;
   const pass = document.getElementById("password").value;
-
-  if (!user || !pass) return alert("Enter both fields.");
-
   let users = JSON.parse(localStorage.getItem("users") || "{}");
-
-  if (!users[user] || users[user].password !== pass) {
-    alert("Invalid credentials");
-    return;
-  }
-
+  if (!users[user] || users[user].password !== pass) return alert("Invalid credentials");
   localStorage.setItem("currentUser", user);
   alert("Logged in as " + user);
   window.location.href = "index.html";
@@ -48,7 +31,6 @@ function getCurrentUser() {
   return localStorage.getItem("currentUser");
 }
 
-// CART PER ACCOUNT
 function saveCart(cart) {
   const user = getCurrentUser();
   if (!user) return;
