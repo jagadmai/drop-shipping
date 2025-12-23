@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>NovaStore</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/style.css">
+<script defer src="js/app.js"></script>
+</head>
+
+<body>
+
+<header>
+  <a href="#">NovaStore</a>
+  <a href="cart.html">Cart 🛒</a>
+</header>
+
+<div class="banner">⚠️ Demo Store — No real payments</div>
+
+<section class="hero">
+  <h1>Upgrade Your Life</h1>
+  <p>Trending tech. Clean design.</p>
+  <button onclick="document.querySelector('.products').scrollIntoView({behavior:'smooth'})">
+    Shop Now
+  </button>
+</section>
+
+<section class="products">
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1518441902117-fbfb4b7e34ae">
+    <h3>Smart LED Lights</h3>
+    <div class="price">$29.99</div>
+    <button class="buy" onclick="addToCart('Smart LED Lights',29.99)">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1585386959984-a41552231693">
+    <h3>Wireless Charger</h3>
+    <div class="price">$24.99</div>
+    <button class="buy" onclick="addToCart('Wireless Charger',24.99)">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90">
+    <h3>Desk Lamp</h3>
+    <div class="price">$19.99</div>
+    <button class="buy" onclick="addToCart('Desk Lamp',19.99)">Add to Cart</button>
+  </div>
+</section>
+
+<section class="reviews">
+  <h2>Customer Reviews</h2>
+  <div class="review">⭐⭐⭐⭐⭐ “Looks premium. Feels premium.”</div>
+  <div class="review">⭐⭐⭐⭐ “Shipping was fast.”</div>
+</section>
+
+<footer>
+  © 2025 NovaStore
+</footer>
+
+</body>
+</html>
